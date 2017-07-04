@@ -13,26 +13,27 @@ import UIKit
 
 public protocol CollectionViewLayoutDelegate {
     
-    func collectionView(collectionView: UICollectionView, heightForImageAtIndexPath indexPath: NSIndexPath, withWidth: CGFloat) -> CGFloat
+    func collectionView(collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat
     
-    func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth: CGFloat) -> CGFloat
+    func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat
 }
 
 
 //MARK: CollectionViewLayoutAttributes
 
-public class CollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
+public class PinterestLayoutAttributes: UICollectionViewLayoutAttributes {
     
     public var imageHeight: CGFloat = 0
     
+    
     override public func copy(with zone: NSZone? = nil) -> Any {
-        let copy = super.copy(with: zone) as! CollectionViewLayoutAttributes
+        let copy = super.copy(with: zone) as! PinterestLayoutAttributes
         copy.imageHeight = imageHeight
         return copy
     }
     
     override public func isEqual(_ object: Any?) -> Bool {
-        if let attributes = object as? CollectionViewLayoutAttributes {
+        if let attributes = object as? PinterestLayoutAttributes {
             if attributes.imageHeight == imageHeight {
                 return super.isEqual(object)
             }
@@ -49,33 +50,46 @@ public class PinterestLayout: UICollectionViewLayout {
     public var delegate: CollectionViewLayoutDelegate!
     public var numberOfColumns: Int = 1
     public var cellPadding: CGFloat = 0
-    public var numberOfSections: Int = 1
-    var insets = UIEdgeInsets.zero
     
-    private var cache = [CollectionViewLayoutAttributes]()
+    private var cache = [PinterestLayoutAttributes]()
     private var contentHeight: CGFloat = 0
-    private var width: CGFloat {
+    private var contentWidth: CGFloat {
         get {
-            insets = collectionView!.contentInset
-            let bounds = collectionView!.bounds
+            let bounds = collectionView.bounds
+            let insets = collectionView.contentInset
             return bounds.width - insets.left - insets.right
         }
     }
     
     override public var collectionViewContentSize: CGSize {
         get {
-            return CGSize(width: width, height: contentHeight)
+            return CGSize(
+                width: contentWidth,
+                height: contentHeight
+            )
         }
     }
     
     override public class var layoutAttributesClass: AnyClass {
-        return CollectionViewLayoutAttributes.self
+        return PinterestLayoutAttributes.self
     }
     
+    override public var collectionView: UICollectionView {
+        return super.collectionView!
+    }
+    
+    var numberOfSections: Int {
+        return collectionView.numberOfSections
+    }
+    
+    func numberOfItems(inSection section: Int) -> Int {
+        return collectionView.numberOfItems(inSection: section)
+    }
+    
+    
     override public func prepare() {
-        
         if cache.isEmpty {
-            let collumnWidth = width / CGFloat(numberOfColumns)
+            let collumnWidth = contentWidth / CGFloat(numberOfColumns)
             let cellWidth = collumnWidth - (cellPadding * 2)
             
             var xOffsets = [CGFloat]()
@@ -85,39 +99,43 @@ public class PinterestLayout: UICollectionViewLayout {
             }
             
             var yOffsets = [CGFloat](repeating: 0, count: numberOfColumns)
+            
             for section in 0..<numberOfSections {
+                let numberOfItems = self.numberOfItems(inSection: section)
                 
-                var column = 0
-                var oneColumn = Int(collectionView!.numberOfItems(inSection: section)/numberOfColumns)
-                if collectionView!.numberOfItems(inSection: section) % numberOfColumns != 0 {
-                    oneColumn += 1
-                }
-                for item in 0..<collectionView!.numberOfItems(inSection: section) {
-                    
+                for item in 0..<numberOfItems {
                     let indexPath = IndexPath(item: item, section: section)
                     
-                    column = Int(item/(oneColumn))
+                    let column = yOffsets.index(of: yOffsets.min() ?? 0) ?? 0
                     
-                    let imageHeight = delegate.collectionView(collectionView: collectionView!, heightForImageAtIndexPath: indexPath as NSIndexPath, withWidth: cellWidth)
-                    let annotationHeight = delegate.collectionView(collectionView: collectionView!, heightForAnnotationAtIndexPath: indexPath as NSIndexPath, withWidth: cellWidth)
+                    let imageHeight = delegate.collectionView(
+                        collectionView: collectionView,
+                        heightForImageAtIndexPath: indexPath,
+                        withWidth: cellWidth
+                    )
+                    let annotationHeight = delegate.collectionView(
+                        collectionView: collectionView,
+                        heightForAnnotationAtIndexPath: indexPath,
+                        withWidth: cellWidth
+                    )
                     let cellHeight = cellPadding + imageHeight + annotationHeight + cellPadding
                     
                     let frame = CGRect(
                         x: xOffsets[column],
                         y: yOffsets[column],
                         width: collumnWidth,
-                        height: cellHeight)
-                    let insetFrame = UIEdgeInsetsInsetRect(frame, insets)
+                        height: cellHeight
+                    )
                     
-                    let attributes = CollectionViewLayoutAttributes(
+                    let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+                    let attributes = PinterestLayoutAttributes(
                         forCellWith: indexPath
                     )
                     attributes.frame = insetFrame
                     attributes.imageHeight = imageHeight
                     cache.append(attributes)
                     
-                    let cgrectFrame = frame
-                    contentHeight = max(contentHeight, cgrectFrame.maxY)
+                    contentHeight = max(contentHeight, frame.maxY)
                     yOffsets[column] = yOffsets[column] + cellHeight
                 }
             }

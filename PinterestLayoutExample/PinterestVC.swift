@@ -27,7 +27,12 @@ class PinterestVC: UICollectionViewController {
     
     private func setupCollectionViewInsets() {
         collectionView!.backgroundColor = .clear
-        collectionView!.contentInset = UIEdgeInsets(top: 15, left: 5, bottom: 5, right: 5)
+        collectionView!.contentInset = UIEdgeInsets(
+            top: 15,
+            left: 5,
+            bottom: 5,
+            right: 5
+        )
     }
     
     private func setupLayout() {
@@ -35,7 +40,6 @@ class PinterestVC: UICollectionViewController {
         layout.delegate = self
         layout.cellPadding = 5
         layout.numberOfColumns = 2
-        layout.numberOfSections = images.count
     }
 }
 
@@ -73,15 +77,19 @@ extension PinterestVC {
 //MARK: CollectionViewLayoutDelegate
 
 extension PinterestVC: CollectionViewLayoutDelegate {
-    func collectionView(collectionView: UICollectionView, heightForImageAtIndexPath indexPath: NSIndexPath, withWidth: CGFloat) -> CGFloat {
-        
+    
+    func collectionView(collectionView: UICollectionView,
+                        heightForImageAtIndexPath indexPath: IndexPath,
+                        withWidth: CGFloat) -> CGFloat {
         let image = images[indexPath.section][indexPath.item]
         let boundingRect = CGRect(x: 0, y: 0, width: withWidth, height: CGFloat(MAXFLOAT))
         let rect = AVMakeRect(aspectRatio: image.size, insideRect: boundingRect)
         return rect.height
     }
     
-    func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth: CGFloat) -> CGFloat {
+    func collectionView(collectionView: UICollectionView,
+                        heightForAnnotationAtIndexPath indexPath: IndexPath,
+                        withWidth: CGFloat) -> CGFloat {
         return 50
     }
 }

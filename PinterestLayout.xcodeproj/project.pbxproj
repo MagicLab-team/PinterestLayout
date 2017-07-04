@@ -107,6 +107,14 @@
 			path = ../PinterestLayout;
 			sourceTree = "<group>";
 		};
+		B572E5ED1F0C0D5500540F7C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF9EE91F0BB19500DAA3B7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B5AFCB9D1F0BB16F00CB71B5 = {
 			isa = PBXGroup;
 			children = (
@@ -129,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				B5AFCBAA1F0BB16F00CB71B5 /* PinterestLayout.h */,
-				B5AFCBAB1F0BB16F00CB71B5 /* Info.plist */,
 				B5CF9EF21F0BB1D200DAA3B7 /* PinterestLayout.swift */,
+				B5AFCBAB1F0BB16F00CB71B5 /* Info.plist */,
 			);
 			path = PinterestLayout;
 			sourceTree = "<group>";
@@ -142,7 +150,7 @@
 				B5CF9EDF1F0BB19500DAA3B7 /* PinterestVC.swift */,
 				640095F41F0BC340006AE391 /* UI */,
 				640095F81F0BC3E8006AE391 /* Recourses */,
-				B5CF9EE91F0BB19500DAA3B7 /* Info.plist */,
+				B572E5ED1F0C0D5500540F7C /* Supporting Files */,
 			);
 			path = PinterestLayoutExample;
 			sourceTree = "<group>";
