@@ -13,8 +13,12 @@ import AVFoundation
 
 class PinterestVC: UICollectionViewController {
     
-    var images: [[UIImage]] = [[#imageLiteral(resourceName: "new_york"), #imageLiteral(resourceName: "bigben_river"), #imageLiteral(resourceName: "dubai"), #imageLiteral(resourceName: "4"), #imageLiteral(resourceName: "tiger"), #imageLiteral(resourceName: "5")], [#imageLiteral(resourceName: "adelaide_castle"), #imageLiteral(resourceName: "rys"), #imageLiteral(resourceName: "12"), #imageLiteral(resourceName: "cat"), #imageLiteral(resourceName: "6"), #imageLiteral(resourceName: "city"), #imageLiteral(resourceName: "9"), #imageLiteral(resourceName: "ph"), #imageLiteral(resourceName: "paris"), #imageLiteral(resourceName: "2"), #imageLiteral(resourceName: "bridge"), #imageLiteral(resourceName: "elephants")], [#imageLiteral(resourceName: "venice"), #imageLiteral(resourceName: "bw_new_york"), #imageLiteral(resourceName: "10"), #imageLiteral(resourceName: "kittens"), #imageLiteral(resourceName: "deer"), #imageLiteral(resourceName: "11"), #imageLiteral(resourceName: "8"), #imageLiteral(resourceName: "13"), #imageLiteral(resourceName: "squirell"), #imageLiteral(resourceName: "lion"), #imageLiteral(resourceName: "nature"), #imageLiteral(resourceName: "4")]]
-
+    var images: [[UIImage]] = [
+        [#imageLiteral(resourceName: "new_york"), #imageLiteral(resourceName: "bigben_river"), #imageLiteral(resourceName: "dubai"), #imageLiteral(resourceName: "4"), #imageLiteral(resourceName: "tiger"), #imageLiteral(resourceName: "5")],
+        [#imageLiteral(resourceName: "adelaide_castle"), #imageLiteral(resourceName: "rys"), #imageLiteral(resourceName: "12"), #imageLiteral(resourceName: "cat"), #imageLiteral(resourceName: "6"), #imageLiteral(resourceName: "city"), #imageLiteral(resourceName: "9"), #imageLiteral(resourceName: "ph"), #imageLiteral(resourceName: "paris"), #imageLiteral(resourceName: "2"), #imageLiteral(resourceName: "bridge"), #imageLiteral(resourceName: "elephants")],
+        [#imageLiteral(resourceName: "venice"), #imageLiteral(resourceName: "bw_new_york"), #imageLiteral(resourceName: "10"), #imageLiteral(resourceName: "kittens"), #imageLiteral(resourceName: "deer"), #imageLiteral(resourceName: "11"), #imageLiteral(resourceName: "8"), #imageLiteral(resourceName: "13"), #imageLiteral(resourceName: "squirell"), #imageLiteral(resourceName: "lion"), #imageLiteral(resourceName: "nature"), #imageLiteral(resourceName: "4")]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +50,7 @@ class PinterestVC: UICollectionViewController {
 
 //MARK: UICollectionViewDataSource
 
-extension PinterestVC {
+extension PinterestVC: UICollectionViewDelegateFlowLayout {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return images.count
@@ -77,6 +81,14 @@ extension PinterestVC {
 //MARK: CollectionViewLayoutDelegate
 
 extension PinterestVC: CollectionViewLayoutDelegate {
+    
+    func collectionView(collectionView: UICollectionView,
+                        sizeForSectionHeaderViewForSection section: Int) -> CGSize {
+        return CGSize(
+            width: collectionView.frame.width,
+            height: 0
+        )
+    }
     
     func collectionView(collectionView: UICollectionView,
                         heightForImageAtIndexPath indexPath: IndexPath,

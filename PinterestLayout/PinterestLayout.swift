@@ -13,9 +13,16 @@ import UIKit
 
 public protocol CollectionViewLayoutDelegate {
     
-    func collectionView(collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat
+    func collectionView(collectionView: UICollectionView,
+                        sizeForSectionHeaderViewForSection section: Int) -> CGSize
     
-    func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat
+    func collectionView(collectionView: UICollectionView,
+                        heightForImageAtIndexPath indexPath: IndexPath,
+                        withWidth: CGFloat) -> CGFloat
+    
+    func collectionView(collectionView: UICollectionView,
+                        heightForAnnotationAtIndexPath indexPath: IndexPath,
+                        withWidth: CGFloat) -> CGFloat
 }
 
 
@@ -98,10 +105,31 @@ public class PinterestLayout: UICollectionViewLayout {
                 xOffsets.append(CGFloat(collumn) * collumnWidth)
             }
             
-            var yOffsets = [CGFloat](repeating: 0, count: numberOfColumns)
-            
             for section in 0..<numberOfSections {
                 let numberOfItems = self.numberOfItems(inSection: section)
+                
+                let headerY = contentHeight
+                let headerSize = delegate.collectionView(
+                    collectionView: collectionView,
+                    sizeForSectionHeaderViewForSection: section
+                )
+                let headerX = (contentWidth - headerSize.width) / 2
+                let headerFrame = CGRect(
+                    origin: CGPoint(x: headerX, y: headerY),
+                    size: headerSize
+                )
+                let attributes = PinterestLayoutAttributes(
+                    forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                    with: IndexPath(item: 0, section: section)
+                )
+                attributes.frame = headerFrame
+                cache.append(attributes)
+                
+                contentHeight = headerFrame.maxY
+                var yOffsets = [CGFloat](
+                    repeating: contentHeight,
+                    count: numberOfColumns
+                )
                 
                 for item in 0..<numberOfItems {
                     let indexPath = IndexPath(item: item, section: section)
