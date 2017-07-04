@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640095F71F0BC37F006AE391 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640095F61F0BC37F006AE391 /* CollectionViewCell.swift */; };
+		644F27AA1F0BF039004AD5AD /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */; };
 		B5AFCBAC1F0BB16F00CB71B5 /* PinterestLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = B5AFCBAA1F0BB16F00CB71B5 /* PinterestLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5CF9EDE1F0BB19500DAA3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF9EDD1F0BB19500DAA3B7 /* AppDelegate.swift */; };
-		B5CF9EE01F0BB19500DAA3B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF9EDF1F0BB19500DAA3B7 /* ViewController.swift */; };
+		B5CF9EE01F0BB19500DAA3B7 /* PinterestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF9EDF1F0BB19500DAA3B7 /* PinterestVC.swift */; };
 		B5CF9EE31F0BB19500DAA3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CF9EE11F0BB19500DAA3B7 /* Main.storyboard */; };
 		B5CF9EE51F0BB19500DAA3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5CF9EE41F0BB19500DAA3B7 /* Assets.xcassets */; };
 		B5CF9EE81F0BB19500DAA3B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CF9EE61F0BB19500DAA3B7 /* LaunchScreen.storyboard */; };
@@ -43,14 +45,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		640095F61F0BC37F006AE391 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		B5AFCBA71F0BB16F00CB71B5 /* PinterestLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinterestLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AFCBAA1F0BB16F00CB71B5 /* PinterestLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinterestLayout.h; sourceTree = "<group>"; };
 		B5AFCBAB1F0BB16F00CB71B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CF9EDB1F0BB19500DAA3B7 /* PinterestLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinterestLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CF9EDD1F0BB19500DAA3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5CF9EDF1F0BB19500DAA3B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5CF9EDF1F0BB19500DAA3B7 /* PinterestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestVC.swift; sourceTree = "<group>"; };
 		B5CF9EE21F0BB19500DAA3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B5CF9EE41F0BB19500DAA3B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5CF9EE41F0BB19500DAA3B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PinterestLayoutExample/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		B5CF9EE71F0BB19500DAA3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5CF9EE91F0BB19500DAA3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CF9EF21F0BB1D200DAA3B7 /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -75,6 +79,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		640095F41F0BC340006AE391 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				640095F51F0BC34D006AE391 /* Views */,
+				B5CF9EE11F0BB19500DAA3B7 /* Main.storyboard */,
+				B5CF9EE61F0BB19500DAA3B7 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		640095F51F0BC34D006AE391 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				640095F61F0BC37F006AE391 /* CollectionViewCell.swift */,
+				644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		640095F81F0BC3E8006AE391 /* Recourses */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF9EE41F0BB19500DAA3B7 /* Assets.xcassets */,
+			);
+			name = Recourses;
+			path = ../PinterestLayout;
+			sourceTree = "<group>";
+		};
 		B5AFCB9D1F0BB16F00CB71B5 = {
 			isa = PBXGroup;
 			children = (
@@ -107,10 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				B5CF9EDD1F0BB19500DAA3B7 /* AppDelegate.swift */,
-				B5CF9EDF1F0BB19500DAA3B7 /* ViewController.swift */,
-				B5CF9EE11F0BB19500DAA3B7 /* Main.storyboard */,
-				B5CF9EE41F0BB19500DAA3B7 /* Assets.xcassets */,
-				B5CF9EE61F0BB19500DAA3B7 /* LaunchScreen.storyboard */,
+				B5CF9EDF1F0BB19500DAA3B7 /* PinterestVC.swift */,
+				640095F41F0BC340006AE391 /* UI */,
+				640095F81F0BC3E8006AE391 /* Recourses */,
 				B5CF9EE91F0BB19500DAA3B7 /* Info.plist */,
 			);
 			path = PinterestLayoutExample;
@@ -242,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CF9EE01F0BB19500DAA3B7 /* ViewController.swift in Sources */,
+				B5CF9EE01F0BB19500DAA3B7 /* PinterestVC.swift in Sources */,
 				B5CF9EDE1F0BB19500DAA3B7 /* AppDelegate.swift in Sources */,
+				640095F71F0BC37F006AE391 /* CollectionViewCell.swift in Sources */,
+				644F27AA1F0BF039004AD5AD /* RoundedCornersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +512,7 @@
 				B5CF9EEB1F0BB19500DAA3B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
