@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		640095F71F0BC37F006AE391 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640095F61F0BC37F006AE391 /* CollectionViewCell.swift */; };
 		644F27AA1F0BF039004AD5AD /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */; };
+		B572E5EF1F0C20D100540F7C /* PinterestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E5EE1F0C20D100540F7C /* PinterestHeader.swift */; };
 		B5AFCBAC1F0BB16F00CB71B5 /* PinterestLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = B5AFCBAA1F0BB16F00CB71B5 /* PinterestLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5CF9EDE1F0BB19500DAA3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF9EDD1F0BB19500DAA3B7 /* AppDelegate.swift */; };
 		B5CF9EE01F0BB19500DAA3B7 /* PinterestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF9EDF1F0BB19500DAA3B7 /* PinterestVC.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		640095F61F0BC37F006AE391 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		B572E5EE1F0C20D100540F7C /* PinterestHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestHeader.swift; sourceTree = "<group>"; };
 		B5AFCBA71F0BB16F00CB71B5 /* PinterestLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinterestLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AFCBAA1F0BB16F00CB71B5 /* PinterestLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinterestLayout.h; sourceTree = "<group>"; };
 		B5AFCBAB1F0BB16F00CB71B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				640095F61F0BC37F006AE391 /* CollectionViewCell.swift */,
 				644F27A91F0BF039004AD5AD /* RoundedCornersView.swift */,
+				B572E5EE1F0C20D100540F7C /* PinterestHeader.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B5CF9EDE1F0BB19500DAA3B7 /* AppDelegate.swift in Sources */,
 				640095F71F0BC37F006AE391 /* CollectionViewCell.swift in Sources */,
 				644F27AA1F0BF039004AD5AD /* RoundedCornersView.swift in Sources */,
+				B572E5EF1F0C20D100540F7C /* PinterestHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

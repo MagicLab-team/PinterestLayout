@@ -16,6 +16,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    
     var image: UIImage? {
         didSet {
             if let image = image {
@@ -28,7 +29,8 @@ class CollectionViewCell: UICollectionViewCell {
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-        let attributes = layoutAttributes as! PinterestLayoutAttributes
-        imageViewHeightLayoutConstraint.constant = attributes.imageHeight
+        if let attributes = layoutAttributes as? PinterestLayoutAttributes {
+            imageViewHeightLayoutConstraint.constant = attributes.imageHeight
+        }
     }
 }

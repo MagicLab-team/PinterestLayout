@@ -24,6 +24,17 @@ class PinterestVC: UICollectionViewController {
         
         setupCollectionViewInsets()
         setupLayout()
+        
+        collectionView?.register(
+            PinterestHeader.self,
+            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+            withReuseIdentifier: "PinterestHeader"
+        )
+        collectionView?.register(
+            PinterestHeader.self,
+            forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+            withReuseIdentifier: "PinterestHeader"
+        )
     }
     
     
@@ -50,10 +61,26 @@ class PinterestVC: UICollectionViewController {
 
 //MARK: UICollectionViewDataSource
 
-extension PinterestVC: UICollectionViewDelegateFlowLayout {
+extension PinterestVC {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return images.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: "PinterestHeader",
+            for: indexPath
+        )
+        
+        if kind == UICollectionElementKindSectionHeader {
+            header.backgroundColor = UIColor.red
+        } else {
+            header.backgroundColor = UIColor.green
+        }
+        
+        return header
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,9 +111,18 @@ extension PinterestVC: CollectionViewLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView,
                         sizeForSectionHeaderViewForSection section: Int) -> CGSize {
+        let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
+        return CGSize(
+            width: width,
+            height: 20
+        )
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+                        sizeForSectionFooterViewForSection section: Int) -> CGSize {
         return CGSize(
             width: collectionView.frame.width,
-            height: 0
+            height: 20
         )
     }
     

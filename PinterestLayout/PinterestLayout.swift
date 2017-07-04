@@ -11,10 +11,13 @@ import UIKit
 
 //MARK: CollectionViewLayoutDelegate
 
-public protocol CollectionViewLayoutDelegate {
+@objc public  protocol CollectionViewLayoutDelegate {
     
-    func collectionView(collectionView: UICollectionView,
-                        sizeForSectionHeaderViewForSection section: Int) -> CGSize
+    @objc optional func collectionView(collectionView: UICollectionView,
+                                       sizeForSectionHeaderViewForSection section: Int) -> CGSize
+    
+    @objc optional func collectionView(collectionView: UICollectionView,
+                                       sizeForSectionFooterViewForSection section: Int) -> CGSize
     
     func collectionView(collectionView: UICollectionView,
                         heightForImageAtIndexPath indexPath: IndexPath,
@@ -94,6 +97,12 @@ public class PinterestLayout: UICollectionViewLayout {
     }
     
     
+    public override func invalidateLayout() {
+        super.invalidateLayout()
+        
+        cache.removeAll()
+    }
+    
     override public func prepare() {
         if cache.isEmpty {
             let collumnWidth = contentWidth / CGFloat(numberOfColumns)
@@ -108,24 +117,28 @@ public class PinterestLayout: UICollectionViewLayout {
             for section in 0..<numberOfSections {
                 let numberOfItems = self.numberOfItems(inSection: section)
                 
-                let headerY = contentHeight
-                let headerSize = delegate.collectionView(
+                if let headerSize = delegate.collectionView?(
                     collectionView: collectionView,
                     sizeForSectionHeaderViewForSection: section
-                )
-                let headerX = (contentWidth - headerSize.width) / 2
-                let headerFrame = CGRect(
-                    origin: CGPoint(x: headerX, y: headerY),
-                    size: headerSize
-                )
-                let attributes = PinterestLayoutAttributes(
-                    forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                    with: IndexPath(item: 0, section: section)
-                )
-                attributes.frame = headerFrame
-                cache.append(attributes)
+                    ) {
+                    let headerX = (contentWidth - headerSize.width) / 2
+                    let headerFrame = CGRect(
+                        origin: CGPoint(
+                            x: headerX,
+                            y: contentHeight
+                        ),
+                        size: headerSize
+                    )
+                    let headerAttributes = PinterestLayoutAttributes(
+                        forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                        with: IndexPath(item: 0, section: section)
+                    )
+                    headerAttributes.frame = headerFrame
+                    cache.append(headerAttributes)
+                    
+                    contentHeight = headerFrame.maxY
+                }
                 
-                contentHeight = headerFrame.maxY
                 var yOffsets = [CGFloat](
                     repeating: contentHeight,
                     count: numberOfColumns
@@ -165,6 +178,28 @@ public class PinterestLayout: UICollectionViewLayout {
                     
                     contentHeight = max(contentHeight, frame.maxY)
                     yOffsets[column] = yOffsets[column] + cellHeight
+                }
+                
+                if let footerSize = delegate.collectionView?(
+                    collectionView: collectionView,
+                    sizeForSectionFooterViewForSection: section
+                    ) {
+                    let footerX = (contentWidth - footerSize.width) / 2
+                    let footerFrame = CGRect(
+                        origin: CGPoint(
+                            x: footerX,
+                            y: contentHeight
+                        ),
+                        size: footerSize
+                    )
+                    let footerAttributes = PinterestLayoutAttributes(
+                        forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+                        with: IndexPath(item: 0, section: section)
+                    )
+                    footerAttributes.frame = footerFrame
+                    cache.append(footerAttributes)
+                    
+                    contentHeight = footerFrame.maxY
                 }
             }
         }
