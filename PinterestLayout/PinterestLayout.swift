@@ -97,10 +97,11 @@ public class PinterestLayout: UICollectionViewLayout {
     }
     
     
-    public override func invalidateLayout() {
-        super.invalidateLayout()
-        
+    override public func invalidateLayout() {
         cache.removeAll()
+        contentHeight = 0
+        
+        super.invalidateLayout()
     }
     
     override public func prepare() {
