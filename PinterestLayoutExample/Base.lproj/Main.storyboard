@@ -1,26 +1,129 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="95s-N1-ozz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--CustomCell-->
+        <scene sceneID="Obc-sv-G3Y">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="SEv-u2-hCH" customClass="CustomCollectionVC" customModule="PinterestLayoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pP5-jP-5dQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewLayout key="collectionViewLayout" id="JpX-bG-ugo" customClass="PinterestLayout" customModule="PinterestLayout"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="aff-Ju-D2b" customClass="CollectionViewCell" customModule="PinterestLayoutExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="175" height="273"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="273"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Gc-isB" customClass="RoundedCornersView" customModule="PinterestLayoutExample" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="273"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tJS-Me-mHT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="225"/>
+                                                    <color key="backgroundColor" red="0.3356396961" green="1" blue="0.59461155170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="225" id="8gD-Dj-Tgc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J30-kD-wuc">
+                                                    <rect key="frame" x="4" y="229" width="167" height="12.5"/>
+                                                    <fontDescription key="fontDescription" name="Arial-ItalicMT" family="Arial" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="J30-kD-wuc" secondAttribute="trailing" constant="4" id="4Lf-j3-AWn"/>
+                                                <constraint firstItem="tJS-Me-mHT" firstAttribute="leading" secondItem="qRb-Gc-isB" secondAttribute="leading" id="BqD-ez-S4p"/>
+                                                <constraint firstItem="J30-kD-wuc" firstAttribute="top" secondItem="tJS-Me-mHT" secondAttribute="bottom" constant="4" id="R5S-iz-eKV"/>
+                                                <constraint firstAttribute="trailing" secondItem="tJS-Me-mHT" secondAttribute="trailing" id="RzT-sS-7Vx"/>
+                                                <constraint firstItem="tJS-Me-mHT" firstAttribute="top" secondItem="qRb-Gc-isB" secondAttribute="top" id="Z5F-o0-U5H"/>
+                                                <constraint firstItem="J30-kD-wuc" firstAttribute="leading" secondItem="qRb-Gc-isB" secondAttribute="leading" constant="4" id="cgY-jS-xJD"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="J30-kD-wuc" secondAttribute="bottom" priority="750" constant="4" id="tp5-gH-SX4"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qRb-Gc-isB" secondAttribute="trailing" id="P4X-oL-b7A"/>
+                                    <constraint firstItem="qRb-Gc-isB" firstAttribute="top" secondItem="aff-Ju-D2b" secondAttribute="top" id="T5E-9X-FHv"/>
+                                    <constraint firstAttribute="bottom" secondItem="qRb-Gc-isB" secondAttribute="bottom" id="e9G-00-m4m"/>
+                                    <constraint firstItem="qRb-Gc-isB" firstAttribute="leading" secondItem="aff-Ju-D2b" secondAttribute="leading" id="r17-4n-D6U"/>
+                                </constraints>
+                                <size key="customSize" width="175" height="273"/>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="J30-kD-wuc" id="c4P-21-YuI"/>
+                                    <outlet property="imageView" destination="tJS-Me-mHT" id="QJN-BS-5Vb"/>
+                                    <outlet property="imageViewHeightLayoutConstraint" destination="8gD-Dj-Tgc" id="Xe2-s6-RwC"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="SEv-u2-hCH" id="gNo-1x-GWu"/>
+                            <outlet property="delegate" destination="SEv-u2-hCH" id="z0o-6v-gbf"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="CustomCell" id="gzG-9Y-Jjf"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Du7-im-1A0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1804" y="826"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="28l-Tn-LYA">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="95s-N1-ozz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="zJO-32-Bf8">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Sug-Sb-M6Y" kind="relationship" relationship="viewControllers" id="KKr-VB-IqM"/>
+                        <segue destination="SEv-u2-hCH" kind="relationship" relationship="viewControllers" id="6eY-we-7VX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vt-9V-x8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896.79999999999995" y="133.5832083958021"/>
+        </scene>
+        <!--PinterestVC-->
+        <scene sceneID="wqM-GZ-VOg">
+            <objects>
+                <collectionViewController id="Sug-Sb-M6Y" customClass="MyPinterestVC" customModule="PinterestLayoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4Iw-qP-CU8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewLayout key="collectionViewLayout" id="vYh-ty-jNR"/>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Sug-Sb-M6Y" id="XwW-fh-1r0"/>
+                            <outlet property="delegate" destination="Sug-Sb-M6Y" id="W43-X5-OtH"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="PinterestVC" id="4ij-6G-aeW"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pNi-oj-KhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804" y="134"/>
         </scene>
     </scenes>
 </document>
