@@ -8,14 +8,9 @@
 
 import UIKit
 import PinterestLayout
-import AVFoundation
 
 
 class MyPinterestVC: PinterestVC {
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -61,5 +56,10 @@ class MyPinterestVC: PinterestVC {
             bottom: 49,
             right: 5
         )
+    }
+    
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

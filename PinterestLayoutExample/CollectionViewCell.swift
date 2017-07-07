@@ -30,6 +30,7 @@ class CollectionViewCell: UICollectionViewCell {
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
         if let attributes = layoutAttributes as? PinterestLayoutAttributes {
+            //change image view height by changing its constraint 
             imageViewHeightLayoutConstraint.constant = attributes.imageHeight
         }
     }

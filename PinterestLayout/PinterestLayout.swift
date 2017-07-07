@@ -63,7 +63,9 @@ public class PinterestLayout: UICollectionViewLayout {
         return collectionView.numberOfItems(inSection: section)
     }
     
-    
+    /**
+     Invalidates layout.
+     */
     override public func invalidateLayout() {
         cache.removeAll()
         contentHeight = 0
