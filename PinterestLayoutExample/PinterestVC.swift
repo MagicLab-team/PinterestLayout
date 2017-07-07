@@ -11,6 +11,9 @@ import PinterestLayout
 import AVFoundation
 
 
+private let cellIdentifier = "PinterestLayout.PinterestCell"
+
+
 class PinterestVC: UICollectionViewController {
     
     var images: [UIImage] = [#imageLiteral(resourceName: "new_york"), #imageLiteral(resourceName: "bigben_river"), #imageLiteral(resourceName: "dubai"), #imageLiteral(resourceName: "4"), #imageLiteral(resourceName: "tiger"), #imageLiteral(resourceName: "5"), #imageLiteral(resourceName: "adelaide_castle"), #imageLiteral(resourceName: "rys"), #imageLiteral(resourceName: "12"), #imageLiteral(resourceName: "cat"), #imageLiteral(resourceName: "6"), #imageLiteral(resourceName: "city"), #imageLiteral(resourceName: "9"), #imageLiteral(resourceName: "ph"), #imageLiteral(resourceName: "paris"), #imageLiteral(resourceName: "2"), #imageLiteral(resourceName: "bridge"), #imageLiteral(resourceName: "elephants"), #imageLiteral(resourceName: "venice"), #imageLiteral(resourceName: "bw_new_york"), #imageLiteral(resourceName: "10"), #imageLiteral(resourceName: "kittens"), #imageLiteral(resourceName: "deer"), #imageLiteral(resourceName: "11"), #imageLiteral(resourceName: "8"), #imageLiteral(resourceName: "13"), #imageLiteral(resourceName: "squirell"), #imageLiteral(resourceName: "lion"), #imageLiteral(resourceName: "nature"), #imageLiteral(resourceName: "4")]
@@ -21,8 +24,13 @@ class PinterestVC: UICollectionViewController {
         
         setupCollectionViewInsets()
         setupLayout()
+        
+        collectionView?.register(
+            PinterestCell.self,
+            forCellWithReuseIdentifier: "PinterestCell"
+        )
     }
-
+    
     //MARK: private
     
     private func setupCollectionViewInsets() {
@@ -53,16 +61,14 @@ extension PinterestVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "PinterestCell",
+            for: indexPath) as! PinterestCell
         
         let image = images[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionViewCell
-        cell.image = image
         
-        if indexPath.item % 2 == 0 {
-            cell.descriptionLabel.text = "Very short description"
-        } else {
-            cell.descriptionLabel.text = "Tonight, there are no lovers walking down the park alleys. There are no kings in the castles, and the princesses die alone – they have no frogs or peas. Tonight, the inkpots are empty, and the words are uncountable. Tonight, all shouts are muffled by unbearable silence..."
-        }
+        cell.imageView.image = image
+        cell.descriptionLabel.text = "text"
         
         return cell
     }
