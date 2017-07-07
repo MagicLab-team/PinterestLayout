@@ -13,6 +13,9 @@ import AVFoundation
 
 class MyPinterestVC: PinterestVC {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
