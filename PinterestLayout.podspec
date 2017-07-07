@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
     s.name         = "PinterestLayout"
-    s.version      = "1.0.2"
+    s.version      = "1.0.3"
     s.summary      = "Pinterest like layout."
-    s.homepage     = "https://github.com/romansorochak"
+    s.homepage     = "https://github.com/MagicLab-team"
     s.license      = "MIT"
     s.author             = { "Roman Sorochak" => "roman.sorochak@gmail.com" }
     s.platform     = :ios, "8.0"
