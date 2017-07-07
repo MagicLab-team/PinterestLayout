@@ -12,7 +12,7 @@ import UIKit
 /**
  PinterestLayoutDelegate.
  */
-@objc public  protocol PinterestLayoutDelegate {
+@objc public protocol PinterestLayoutDelegate {
     /**
      Size for section header. Optional.
      

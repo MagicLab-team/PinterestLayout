@@ -14,7 +14,7 @@ import AVFoundation
 class MyPinterestVC: PinterestVC {
     
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         let text = "Some text. Some text. Some text. Some text."

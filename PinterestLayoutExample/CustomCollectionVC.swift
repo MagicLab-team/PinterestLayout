@@ -35,7 +35,16 @@ class CustomCollectionVC: UICollectionViewController {
     }
     
     private func setupLayout() {
-        guard let layout = collectionViewLayout as? PinterestLayout else { return }
+        let layout: PinterestLayout = {
+            if let layout = collectionViewLayout as? PinterestLayout {
+                return layout
+            }
+            let layout = PinterestLayout()
+            
+            collectionView?.collectionViewLayout = layout
+            
+            return layout
+        }()
         layout.delegate = self
         layout.cellPadding = 5
         layout.numberOfColumns = 2
