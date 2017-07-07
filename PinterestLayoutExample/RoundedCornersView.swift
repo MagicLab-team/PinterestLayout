@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-open class RoundedCornersView: UIButton {
+class RoundedCornersView: UIButton {
     
     @IBInspectable
     public var cornerRadius: CGFloat = 5.0 {

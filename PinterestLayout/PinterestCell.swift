@@ -9,7 +9,13 @@
 import UIKit
 
 
+let pinterestCellIdentifier = "PinterestLayout.PinterestCell"
+
+
 public class PinterestCell: UICollectionViewCell {
+    
+    static let annotationPadding: CGFloat = 4
+    
     
     private var _roundedCornersView: UIView?
     public var roundedCornersView: UIView {
@@ -61,7 +67,7 @@ public class PinterestCell: UICollectionViewCell {
             roundedCornersView.addSubview(descriptionLabel)
             
             descriptionLabel.numberOfLines = 0
-            descriptionLabel.font = UIFont(name: "Arial-ItalicMT", size: 11)
+            descriptionLabel.font = UIFont.defaultFont
             
             self.addConstraintsForLabel()
             
@@ -148,7 +154,7 @@ extension PinterestCell {
                 toItem: imageView,
                 attribute: .bottom,
                 multiplier: 1,
-                constant: 4
+                constant: PinterestCell.annotationPadding
             )
         )
         roundedCornersView.addConstraint(
@@ -159,7 +165,7 @@ extension PinterestCell {
                 toItem: roundedCornersView,
                 attribute: .left,
                 multiplier: 1,
-                constant: 4
+                constant: PinterestCell.annotationPadding
             )
         )
         roundedCornersView.addConstraint(
@@ -170,7 +176,7 @@ extension PinterestCell {
                 toItem: roundedCornersView,
                 attribute: .right,
                 multiplier: 1,
-                constant: 4
+                constant: PinterestCell.annotationPadding
             )
         )
         let bottomConstraint = NSLayoutConstraint(
@@ -180,7 +186,7 @@ extension PinterestCell {
             toItem: descriptionLabel,
             attribute: .bottom,
             multiplier: 1,
-            constant: 4
+            constant: PinterestCell.annotationPadding
         )
         bottomConstraint.priority = 750
         roundedCornersView.addConstraint(bottomConstraint)

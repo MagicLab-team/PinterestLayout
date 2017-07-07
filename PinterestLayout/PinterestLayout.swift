@@ -9,57 +9,24 @@
 import UIKit
 
 
-//MARK: CollectionViewLayoutDelegate
-
-@objc public  protocol CollectionViewLayoutDelegate {
-    
-    @objc optional func collectionView(collectionView: UICollectionView,
-                                       sizeForSectionHeaderViewForSection section: Int) -> CGSize
-    
-    @objc optional func collectionView(collectionView: UICollectionView,
-                                       sizeForSectionFooterViewForSection section: Int) -> CGSize
-    
-    func collectionView(collectionView: UICollectionView,
-                        heightForImageAtIndexPath indexPath: IndexPath,
-                        withWidth: CGFloat) -> CGFloat
-    
-    func collectionView(collectionView: UICollectionView,
-                        heightForAnnotationAtIndexPath indexPath: IndexPath,
-                        withWidth: CGFloat) -> CGFloat
-}
-
-
-//MARK: CollectionViewLayoutAttributes
-
-public class PinterestLayoutAttributes: UICollectionViewLayoutAttributes {
-    
-    public var imageHeight: CGFloat = 0
-    
-    
-    override public func copy(with zone: NSZone? = nil) -> Any {
-        let copy = super.copy(with: zone) as! PinterestLayoutAttributes
-        copy.imageHeight = imageHeight
-        return copy
-    }
-    
-    override public func isEqual(_ object: Any?) -> Bool {
-        if let attributes = object as? PinterestLayoutAttributes {
-            if attributes.imageHeight == imageHeight {
-                return super.isEqual(object)
-            }
-        }
-        return false
-    }
-}
-
-
-//MARK: CollectionViewLayout
-
+/**
+ PinterestLayout.
+ */
 public class PinterestLayout: UICollectionViewLayout {
     
-    public var delegate: CollectionViewLayoutDelegate!
+    /**
+     Delegate.
+     */
+    public var delegate: PinterestLayoutDelegate!
+    /**
+     Number of columns.
+     */
     public var numberOfColumns: Int = 1
+    /**
+     Cell padding.
+     */
     public var cellPadding: CGFloat = 0
+    
     
     private var cache = [PinterestLayoutAttributes]()
     private var contentHeight: CGFloat = 0
@@ -88,11 +55,11 @@ public class PinterestLayout: UICollectionViewLayout {
         return super.collectionView!
     }
     
-    var numberOfSections: Int {
+    private var numberOfSections: Int {
         return collectionView.numberOfSections
     }
     
-    func numberOfItems(inSection section: Int) -> Int {
+    private func numberOfItems(inSection section: Int) -> Int {
         return collectionView.numberOfItems(inSection: section)
     }
     
