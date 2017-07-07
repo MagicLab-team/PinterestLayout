@@ -180,8 +180,14 @@ override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
 
 ## Tips
 
-- PinterestLayout fully supports collection view headers and footers. So you can have may sections.
-- In case you load data asynchronously please follow next steps:
+### Headers/Footers
+
+PinterestLayout fully supports collection view headers and footers. So you can have many sections.
+
+### When you load data from service 
+
+In case you load data asynchronously please follow next steps:
+
 1. Do not use PinterestVC as parent class to your view controller. Use [custom cell approach](#using-custom-cell).
 2. Make sure server returns image sorce with its sizes (height and width)
 ```json
