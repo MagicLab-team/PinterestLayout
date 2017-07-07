@@ -1,6 +1,7 @@
 # PinterestLayout
 
-Custom collection view layout with different image and text sizes.
+Custom collection view layout with different image and text sizes. 
+
 
 |             PinterestVC         |         Custom Cell          |
 |---------------------------------|------------------------------|
@@ -10,6 +11,8 @@ Custom collection view layout with different image and text sizes.
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Tips](#tips)
+- [Contact us](#contact-us)
 - [License](#license)
 
 
@@ -48,9 +51,9 @@ Then, run the following command:
 $ pod install
 ```
 
-# Usage
+## Usage
 
-## PinterestVC subclass
+### PinterestVC subclass
 
 - All you need to do is to sublcass from PinterestVC and provide items to be shown.
 - PinterestVC will calculate image and text sizes.
@@ -77,7 +80,7 @@ class MyPinterestVC: PinterestVC {
 }
 ```
 
-## Using custom cell
+### Using custom cell
 
 0 - Import PinterestLayout
 ```swift
@@ -174,6 +177,30 @@ override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
     }
 }
 ```
+
+## Tips
+
+- PinterestLayout fully supports collection view headers and footers. So you can have may sections.
+- In case you load data asynchronously please follow next steps:
+1) 
+2) Make sure server returns image sorce with its sizes (height and width)
+```json
+{
+    "src": "/upload/resize_cache/iblock/8e7/204_265_2/8e7f1f04d5e835f596ef33da74946847.jpg",
+    "width": 204,
+    "height": 265
+}
+```
+3) when data is loaded invalidate layout as well as reload data on collection view.
+```swift
+collectionView.collectionViewLayout.invalidateLayout()
+collectionView.reloadData()
+```
+
+## Contact us
+
+Contact our team on email - roman.sorochak@gmail.com
+
 
 ## License
 
