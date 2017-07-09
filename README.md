@@ -210,5 +210,5 @@ Contact our team on email - roman.sorochak@gmail.com
 
 ## License
 
-Reusable is released under the MIT license. See [LICENSE](https://github.com/MagicLab-team/PinterestLayout/blob/master/LICENSE) for details.
+PinterestLayout is released under the MIT license. See [LICENSE](https://github.com/MagicLab-team/PinterestLayout/blob/master/LICENSE) for details.
 
