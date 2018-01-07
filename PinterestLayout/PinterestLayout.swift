@@ -17,7 +17,7 @@ public class PinterestLayout: UICollectionViewLayout {
     /**
      Delegate.
      */
-    public var delegate: PinterestLayoutDelegate!
+    public weak var delegate: PinterestLayoutDelegate!
     /**
      Number of columns.
      */
