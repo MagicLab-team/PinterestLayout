@@ -38,7 +38,7 @@ public extension String {
         let rect = NSString(string: self).boundingRect(
             with: CGSize(width: width, height: CGFloat(MAXFLOAT)),
             options: .usesLineFragmentOrigin,
-            attributes: [NSFontAttributeName: font],
+            attributes: [NSAttributedString.Key.font: font],
             context: nil
         )
         return ceil(rect.height)

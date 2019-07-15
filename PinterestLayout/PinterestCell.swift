@@ -101,7 +101,7 @@ extension PinterestCell {
                 attribute: .top,
                 relatedBy: .equal,
                 toItem: roundedCornersView,
-                attribute: NSLayoutAttribute.top,
+                attribute: NSLayoutConstraint.Attribute.top,
                 multiplier: 1,
                 constant: 0
             )
@@ -188,7 +188,7 @@ extension PinterestCell {
             multiplier: 1,
             constant: PinterestCell.annotationPadding
         )
-        bottomConstraint.priority = 750
+        bottomConstraint.priority = UILayoutPriority(rawValue: 750)
         roundedCornersView.addConstraint(bottomConstraint)
     }
 }
