@@ -25,7 +25,8 @@ public class PinterestLayout: UICollectionViewLayout {
     /**
      Cell padding.
      */
-    public var cellPadding: CGFloat = 0
+    public var cellPaddingTop: CGFloat = 0
+    public var cellPaddingSide: CGFloat = 0
     
     
     private var cache = [PinterestLayoutAttributes]()
@@ -76,7 +77,7 @@ public class PinterestLayout: UICollectionViewLayout {
     override public func prepare() {
         if cache.isEmpty {
             let collumnWidth = contentWidth / CGFloat(numberOfColumns)
-            let cellWidth = collumnWidth - (cellPadding * 2)
+            let cellWidth = collumnWidth - (cellPaddingSide * 2)
             
             var xOffsets = [CGFloat]()
             
@@ -129,7 +130,7 @@ public class PinterestLayout: UICollectionViewLayout {
                         heightForAnnotationAtIndexPath: indexPath,
                         withWidth: cellWidth
                     )
-                    let cellHeight = cellPadding + imageHeight + annotationHeight + cellPadding
+                    let cellHeight = cellPaddingTop + imageHeight + annotationHeight + cellPaddingTop
                     
                     let frame = CGRect(
                         x: xOffsets[column],
@@ -138,7 +139,7 @@ public class PinterestLayout: UICollectionViewLayout {
                         height: cellHeight
                     )
                     
-                    let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+                    let insetFrame = frame.insetBy(dx: cellPaddingSide, dy: cellPaddingTop)
                     let attributes = PinterestLayoutAttributes(
                         forCellWith: indexPath
                     )
