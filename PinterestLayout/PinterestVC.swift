@@ -73,7 +73,8 @@ open class PinterestVC: UICollectionViewController, PinterestLayoutDelegate {
             return layout
         }()
         layout.delegate = self
-        layout.cellPadding = 5
+        layout.cellPaddingTop = 5
+        layout.cellPaddingSide = 5
         layout.numberOfColumns = 2
     }
     
